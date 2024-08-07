@@ -8,6 +8,7 @@
 		<Description>A simple logger library for personal projects.</Description>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+		<RepositoryUrl>https://github.com/banned2054/BannedLogger</RepositoryUrl>
 	</PropertyGroup>
 
 </Project>
