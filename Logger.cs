@@ -2,7 +2,7 @@
 
 namespace BannedLogger
 {
-    internal class Logger
+    public class Logger
     {
         private readonly string _name;
         private readonly string _baseDirectory;
@@ -35,7 +35,7 @@ namespace BannedLogger
             SetupLogFile();
             var now = DateTime.Now;
 
-            var finalMessage = $"{now:MM-dd-yy H:mm:ss} - {level} - {_name} - {message}";
+            var finalMessage = $"{now:yyyy-MM-dd H:mm:ss} - {level} - {_name} - {message}";
 
             if (_isWriteOnConsole)
             {
