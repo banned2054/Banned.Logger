@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banned.Logger", "Banned.Logger\Banned.Logger.csproj", "{CEA5D9AD-185B-1899-CDA4-55DC4BFE4D97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banned.Logger.Test", "Banned.Logger.Test\Banned.Logger.Test.csproj", "{3A80DD04-5FB0-48D6-B34D-69709138D620}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CEA5D9AD-185B-1899-CDA4-55DC4BFE4D97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEA5D9AD-185B-1899-CDA4-55DC4BFE4D97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEA5D9AD-185B-1899-CDA4-55DC4BFE4D97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEA5D9AD-185B-1899-CDA4-55DC4BFE4D97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A80DD04-5FB0-48D6-B34D-69709138D620}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A80DD04-5FB0-48D6-B34D-69709138D620}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A80DD04-5FB0-48D6-B34D-69709138D620}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A80DD04-5FB0-48D6-B34D-69709138D620}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8ADE1A06-9865-4010-A035-5FE4FAE60B3B}
+	EndGlobalSection
+EndGlobal
