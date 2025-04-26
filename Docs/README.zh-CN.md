@@ -94,4 +94,4 @@ logs/
 
 ## 许可证
 
-MIT License 
+本项目采用 Apache-2.0 许可证。

@@ -96,4 +96,4 @@ When a log file reaches `MaxFileSize`, it will be automatically rotated:
 
 ## License
 
-MIT License
+This project is licensed under the Apache License 2.0.
