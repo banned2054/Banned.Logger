@@ -33,7 +33,7 @@ var logger = new Logger(options =>
     options.MinimumLevel = LogLevel.Info;
     options.MaxFileSize = 5 * 1024 * 1024;  // 5MB
     options.MaxRetainedFiles = 7;           // 保留7天的日志
-    options.LogFormat = "[{timestamp}] [{level}] {name}: {message}";
+    options.LogFormat = "[{timestamp:yyyy-MM-dd HH:mm:ss}] [{level}] {name}: {message}";
 });
 
 // 异步记录日志
@@ -57,10 +57,27 @@ await logger.ErrorAsync("这是一条错误日志");
 ## 日志格式
 
 日志格式支持以下占位符：
-- `{timestamp}`: 时间戳
+- `{timestamp:format}`: 时间戳（支持自定义 DateTime 格式）
 - `{level}`: 日志级别
 - `{name}`: 记录器名称
 - `{message}`: 日志消息
+
+格式示例：
+```csharp
+// 默认格式
+"{timestamp:yyyy-MM-dd HH:mm:ss} - {level} - {name} - {message}"
+
+// 带方括号的自定义格式
+"[{timestamp:yyyy-MM-dd HH:mm:ss}] [{level}] {name}: {message}"
+
+// 简短格式
+"{timestamp:HH:mm:ss} {level} {message}"
+
+// 自定义日期格式
+"{timestamp:MM/dd/yyyy} {level} {message}"
+```
+
+时间戳格式遵循标准的 .NET DateTime 格式字符串。有关格式字符串的更多信息，请参阅 [标准日期和时间格式字符串](https://learn.microsoft.com/zh-cn/dotnet/standard/base-types/standard-date-and-time-format-strings) 和 [自定义日期和时间格式字符串](https://learn.microsoft.com/zh-cn/dotnet/standard/base-types/custom-date-and-time-format-strings)。
 
 ## 日志文件组织
 

@@ -35,7 +35,7 @@ var logger = new Logger(options =>
     options.MinimumLevel = LogLevel.Info;
     options.MaxFileSize = 5 * 1024 * 1024;  // 5MB
     options.MaxRetainedFiles = 7;           // Keep logs for 7 days
-    options.LogFormat = "[{timestamp}] [{level}] {name}: {message}";
+    options.LogFormat = "[{timestamp:yyyy-MM-dd HH:mm:ss}] [{level}] {name}: {message}";
 });
 
 // Log messages asynchronously
@@ -59,10 +59,27 @@ await logger.ErrorAsync("This is an error message");
 ## Log Format
 
 The log format supports the following placeholders:
-- `{timestamp}`: Timestamp
+- `{timestamp:format}`: Timestamp with custom DateTime format
 - `{level}`: Log level
 - `{name}`: Logger name
 - `{message}`: Log message
+
+Example formats:
+```csharp
+// Default format
+"{timestamp:yyyy-MM-dd HH:mm:ss} - {level} - {name} - {message}"
+
+// Custom format with brackets
+"[{timestamp:yyyy-MM-dd HH:mm:ss}] [{level}] {name}: {message}"
+
+// Short format
+"{timestamp:HH:mm:ss} {level} {message}"
+
+// Custom date format
+"{timestamp:MM/dd/yyyy} {level} {message}"
+```
+
+The timestamp format follows the standard .NET DateTime format strings. For more information about format strings, see [Standard date and time format strings](https://learn.microsoft.com/en-us/dotnet/standard/base-types/standard-date-and-time-format-strings) and [Custom date and time format strings](https://learn.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings).
 
 ## Log File Organization
 

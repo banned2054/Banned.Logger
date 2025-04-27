@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Banned.Logger;
 
@@ -86,11 +87,17 @@ public class Logger
         await SetupLogFileAsync();
         var now = DateTime.Now;
 
-        var finalMessage = _options.LogFormat
-                                   .Replace("{timestamp}", now.ToString("yyyy-MM-dd HH:mm:ss"))
-                                   .Replace("{level}", level.ToString())
-                                   .Replace("{name}", _options.Name)
-                                   .Replace("{message}", message);
+        // 处理时间戳格式化
+        var finalMessage = Regex.Replace(_options.LogFormat, @"\{timestamp:(.*?)\}", match =>
+        {
+            var format = match.Groups[1].Value;
+            return now.ToString(format);
+        });
+
+        finalMessage = finalMessage
+                      .Replace("{level}", level.ToString())
+                      .Replace("{name}", _options.Name)
+                      .Replace("{message}", message);
 
         if (_options.WriteOnConsole)
         {

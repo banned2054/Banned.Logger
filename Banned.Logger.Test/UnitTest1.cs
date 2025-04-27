@@ -8,8 +8,14 @@ public class Tests
     }
 
     [Test]
-    public void Test1()
+    public async Task Test1()
     {
-        var logger = new Logger();
+        var logger = new Logger(option =>
+        {
+            option.Name           = "TestName";
+            option.WriteOnConsole = true;
+            option.BaseDirectory  = "log";
+        });
+        await logger.InfoAsync("test info");
     }
 }
