@@ -14,7 +14,6 @@ public class Tests
         {
             option.Name           = "TestName";
             option.WriteOnConsole = true;
-            option.BaseDirectory  = "log";
         });
         await logger.InfoAsync("test info");
     }

@@ -18,6 +18,20 @@ public class Logger
 
     private async Task SetupLogFileAsync()
     {
+        var baseDirectory = _options.BaseDirectory;
+        if (baseDirectory == "")
+        {
+            _options.BaseDirectory = Directory.GetCurrentDirectory();
+            baseDirectory          = _options.BaseDirectory;
+        }
+
+        var isAbsolute = Path.IsPathFullyQualified(baseDirectory); // 返回 true
+        if (!isAbsolute)
+        {
+            _options.BaseDirectory = Path.Combine(Directory.GetCurrentDirectory(), baseDirectory);
+        }
+
+
         var currentMonth   = DateTime.Now.ToString("yyyy-MM");
         var monthDirectory = Path.Combine(_options.BaseDirectory, currentMonth);
         if (!Directory.Exists(monthDirectory))
