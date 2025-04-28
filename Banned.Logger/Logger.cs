@@ -19,21 +19,25 @@ public class Logger
     private async Task SetupLogFileAsync()
     {
         var baseDirectory = _options.BaseDirectory;
-        if (baseDirectory == "")
+        // 如果 baseDirectory 是 null 或空字符串，则使用当前工作目录
+        if (string.IsNullOrEmpty(baseDirectory))
         {
-            _options.BaseDirectory = Directory.GetCurrentDirectory();
-            baseDirectory          = _options.BaseDirectory;
+            baseDirectory          = Directory.GetCurrentDirectory();
+            _options.BaseDirectory = baseDirectory;
         }
 
-        var isAbsolute = Path.IsPathFullyQualified(baseDirectory); // 返回 true
+        // 检查路径是否是绝对路径
+        var isAbsolute = Path.IsPathFullyQualified(baseDirectory);
         if (!isAbsolute)
         {
-            _options.BaseDirectory = Path.Combine(Directory.GetCurrentDirectory(), baseDirectory);
+            // 如果不是绝对路径，则将其与当前工作目录组合
+            baseDirectory          = Path.Combine(Directory.GetCurrentDirectory(), baseDirectory);
+            _options.BaseDirectory = baseDirectory;
         }
 
 
         var currentMonth   = DateTime.Now.ToString("yyyy-MM");
-        var monthDirectory = Path.Combine(_options.BaseDirectory, currentMonth);
+        var monthDirectory = Path.Combine(baseDirectory, currentMonth);
         if (!Directory.Exists(monthDirectory))
         {
             Directory.CreateDirectory(monthDirectory);
